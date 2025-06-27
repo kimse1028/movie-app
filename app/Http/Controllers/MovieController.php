@@ -6,22 +6,36 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    public function index()
+    /**
+     * 한국 영화 데이터를 KOBIS API에서 가져오는 메소드
+     */
+    public function getMovieData()
     {
-        // KOBIS API에서 한국 영화 데이터 가져오기
-        $apiKey = config('app.kobis_api_key', env('KOBIS_API_KEY'));
-
-        // 현재 날짜에서 1년 전 데이터 가져오기
+        $apiKey = env('KOBIS_API_KEY');
         $targetDt = date('Ymd', strtotime('-1 year'));
 
-        // KOBIS API 박스오피스 URL
         $url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
         $url .= "?key={$apiKey}&targetDt={$targetDt}";
 
-        // API 호출
-        $response = file_get_contents($url);
-        $data = json_decode($response, true);
+        try {
+            $response = file_get_contents($url);
+            $data = json_decode($response, true);
 
-        return response()->json($data);
+            if (isset($data['boxOfficeResult']['dailyBoxOfficeList'])) {
+                return $data['boxOfficeResult']['dailyBoxOfficeList'];
+            }
+
+            return [];
+        } catch (Exception $e) {
+            return [];
+        }
+    }
+
+    /**
+     * 영화 목록 페이지 표시
+     */
+    public function index()
+    {
+        return view('movies');
     }
 }
