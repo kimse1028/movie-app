@@ -1,61 +1,66 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# KOBIS 일일 박스오피스 뷰어
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+이 프로젝트는 영화진흥위원회(KOBIS) 오픈 API를 활용하여, 오늘로부터 정확히 1년 전의 일일 박스오피스 순위를 보여주는 간단한 웹 애플리케이션입니다. Laravel 프레임워크와 Livewire를 사용하여 제작되었습니다.
 
-## About Laravel
+## 🖼️ 스크린샷
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+*(이곳에 애플리케이션 스크린샷을 추가하세요.)*
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ 주요 기능
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- 현재 날짜로부터 정확히 1년 전의 일일 박스오피스 순위를 조회합니다.
+- 각 영화의 순위, 제목, 누적 관객 수, 개봉일을 테이블 형식으로 표시합니다.
+- Tailwind CSS를 사용하여 깔끔하고 직관적인 UI를 제공합니다.
+- 다양한 화면 크기에 대응하는 반응형 디자인을 적용했습니다.
 
-## Learning Laravel
+## 🛠️ 사용 기술
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **백엔드:** PHP, Laravel 12
+- **프론트엔드:** Livewire 3, Tailwind CSS, Alpine.js (Livewire에 포함)
+- **API:** KOBIS (영화진흥위원회) 오픈 API
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🚀 설치 및 실행 방법
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1.  **저장소를 복제합니다.**
+    ```bash
+    git clone https://github.com/your-username/your-repo-name.git
+    cd your-repo-name
+    ```
 
-## Laravel Sponsors
+2.  **PHP 의존성을 설치합니다.**
+    ```bash
+    composer install
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3.  **NPM 의존성을 설치합니다.**
+    ```bash
+    npm install
+    ```
 
-### Premium Partners
+4.  **.env 파일을 생성합니다.**
+    ```bash
+    cp .env.example .env
+    ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+5.  **애플리케이션 키를 생성합니다.**
+    ```bash
+    php artisan key:generate
+    ```
 
-## Contributing
+6.  **.env 파일에 KOBIS API 키를 추가합니다.**
+    API 키는 [KOBIS 오픈 API 홈페이지](https://www.kobis.or.kr/kobisopenapi/homepg/main/main.do)에서 발급받아야 합니다.
+    ```
+    KOBIS_API_KEY=발급받은_API_키를_입력하세요
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7.  **개발 서버를 실행합니다.**
+    ```bash
+    php artisan serve
+    ```
 
-## Code of Conduct
+8.  **프론트엔드 에셋을 컴파일합니다.** (새 터미널에서 실행)
+    ```bash
+    npm run dev
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+9.  브라우저에서 `http://127.0.0.1:8000` 주소로 접속합니다.
